@@ -19,6 +19,9 @@ class User(Base):
     password: Mapped[str]
     role_id: Mapped[int] = mapped_column(ForeignKey('roles.id'), default=1, server_default=text("1"))
     role: Mapped["Role"] = relationship("Role", back_populates="users", lazy="joined")
+    blogs: Mapped[list["Blog"]] = relationship(
+        back_populates="user"  # Должно совпадать с именем в модели Blogs
+    )
 
     def __repr__(self):
         return f"{self.__class__.__name__}(id={self.id})"

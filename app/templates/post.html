@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }}</title>
+    <link rel="stylesheet" href="/static/style/post.css">
+</head>
+<body>
+<article class="article-container"
+         data-blog-id="{{ article.id }}"
+         data-blog-status="{{ article.status }}"
+         data-blog-author="{{ article.author }}">
+    <h1 class="article-title">{{ article.title }}</h1>
+    <div class="article-meta">
+        <a href="/blogs?author_id={{ article.author }}">{{ article.author_name }}</a> •
+        {{ article.created_at.strftime('%d %B %Y') }}
+    </div>
+    <div class="article-content">
+        {{ article.content|safe }}
+    </div>
+    <div class="tags-container">
+        {% if article.tags %}
+        <ul class="tags">
+            {% for tag in article.tags %}
+            <li><a href="/blogs?tag={{ tag.name }}" class="tag">{{ tag.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Нет тегов для этой статьи.</p>
+        {% endif %}
+    </div>
+    {% if current_user_id == article.author %}
+    <div class="article-actions">
+        {% if article.status == 'published' %}
+        <button class="button status-button" data-action="change-status" data-new-status="draft">
+            Переместить в черновики
+        </button>
+        {% else %}
+        <button class="button status-button" data-action="change-status" data-new-status="published">
+            Опубликовать
+        </button>
+        {% endif %}
+        <button class="button delete-button" data-action="delete">Удалить блог</button>
+    </div>
+    {% endif %}
+</article>
+
+<div class="view-blogs">
+    <a href="/blogs" class="button view-blogs-button">Смотреть все блоги</a>
+</div>
+
+<script src="/static/js/post.js"></script>
+</body>
+</html>

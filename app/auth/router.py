@@ -30,7 +30,7 @@ async def auth_user(response: Response, user_data: SUserAuth, session: AsyncSess
     if check is None:
         raise IncorrectEmailOrPasswordException
     access_token = create_access_token({"sub": str(check.id)})
-    response.set_cookie(key="users_access_token", value=access_token, httponly=True)
+    response.set_cookie(key="users_access_token", value=access_token, httponly=False)
     return {'ok': True, 'access_token': access_token, 'message': 'Авторизация успешна!'}
 
 

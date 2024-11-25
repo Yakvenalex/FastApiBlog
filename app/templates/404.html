@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог ID {{ blog_id }} не найден</title>
+    <link rel="stylesheet" href="/static/style/404.css">
+</head>
+<body>
+<div class="message-container">
+    <h1 class="message-title">Блог не найден</h1>
+    <p class="message-text">
+        К сожалению, блог <strong>с ID {{ blog_id }} </strong>не найден. Возможно, его автор удалил запись
+        или переместил её в черновики.
+    </p>
+    <a href="/blogs/" class="button">Смотреть опубликованные блоги</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блоги</title>
+    <link rel="stylesheet" href="/static/style/posts.css">
+</head>
+<body>
+<div class="content-container">
+    <div class="page-header">
+        <h1><a href="/blogs/">Все блоги</a></h1>
+    </div>
+
+    <!-- Список статей -->
+    <ul class="articles-list">
+        {% for blog in article.blogs %}
+        <li class="article-card">
+            <h2><a href="/blogs/{{ blog.id }}">{{ blog.title }}</a></h2>
+            <div class="article-meta">
+                {% if blog.author_id %}
+                <a href="?author_id={{ blog.author_id }}">{{ blog.author_name }}</a>
+                {% else %}
+                {{ blog.author_name }}
+                {% endif %}
+                • {{ blog.created_at.strftime('%d %B %Y') }}
+            </div>
+            <p class="article-excerpt">{{ blog.short_description }}</p>
+            {% if blog.tags %}
+            <div class="article-tags">
+                {% for tag in blog.tags %}
+                <a href="/blogs?tag={{ tag.name }}" class="tag">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Пагинация -->
+    <div class="pagination">
+        {% if article.page > 1 %}
+        <a href="?page={{ article.page - 1 }}{% if filters.author_id %}&author_id={{ filters.author_id }}{% endif %}{% if filters.tag %}&tag={{ filters.tag }}{% endif %}"
+           class="pagination-link">←</a>
+        {% endif %}
+        {% for p in range(1, article.total_page + 1) %}
+        <a href="?page={{ p }}{% if filters.author_id %}&author_id={{ filters.author_id }}{% endif %}{% if filters.tag %}&tag={{ filters.tag }}{% endif %}"
+           class="pagination-link {% if p == article.page %}active{% endif %}">{{ p }}</a>
+        {% endfor %}
+        {% if article.page < article.total_page %}
+        <a href="?page={{ article.page + 1 }}{% if filters.author_id %}&author_id={{ filters.author_id }}{% endif %}{% if filters.tag %}&tag={{ filters.tag }}{% endif %}"
+           class="pagination-link">→</a>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

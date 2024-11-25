@@ -1,0 +1,155 @@
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #666;
+    --accent-color: #2196F3;
+    --background-color: #fafafa;
+    --tag-bg: #f0f0f0;
+    --tag-hover-bg: #1976D2; /* Новый цвет фона для тега при наведении */
+    --tag-hover-text: #fff; /* Новый цвет текста для тега при наведении */
+    --max-width: 800px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--primary-color);
+    margin: 0;
+    padding: 20px;
+    background: var(--background-color);
+}
+
+.content-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px;
+    background: white;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+
+.page-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.articles-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.article-card {
+    padding: 2rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateX(10px);
+}
+
+.article-card:last-child {
+    border-bottom: none;
+}
+
+.article-card h2 {
+    font-size: 1.8rem;
+    margin: 0 0 1rem 0;
+}
+
+.article-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.article-card a:hover {
+    color: var(--accent-color);
+}
+
+.article-meta {
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.article-excerpt {
+    color: #444;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.tag {
+    background: var(--tag-bg);
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background: var(--tag-hover-bg);
+    color: var(--tag-hover-text); /* Обновлено: Цвет текста изменяется на белый */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 3rem;
+}
+
+.pagination-link {
+    padding: 8px 16px;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pagination-link:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.pagination-link.active {
+    background: var(--accent-color);
+    color: white;
+}
+
+.pagination-link.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .content-container {
+        padding: 20px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .article-card h2 {
+        font-size: 1.5rem;
+    }
+}

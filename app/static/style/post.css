@@ -1,0 +1,255 @@
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #666;
+    --accent-color: #2196F3;
+    --background-color: #fafafa;
+    --tag-bg: #f0f0f0;
+    --max-width: 800px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--primary-color);
+    margin: 0;
+    padding: 20px;
+    background: var(--background-color);
+}
+
+.article-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px;
+    background: white;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+
+.article-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.article-title:hover {
+    transform: translateX(10px);
+}
+
+.article-meta {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.article-meta a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.article-meta a:hover {
+    color: #1976D2;
+}
+
+.article-content {
+    margin-bottom: 2.5rem;
+}
+
+.article-content p {
+    margin-bottom: 1.8rem;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.article-content h2 {
+    font-size: 2rem;
+    margin: 2.5rem 0 1.2rem;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.article-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.article-content h3 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+}
+
+.article-content blockquote {
+    border-left: 4px solid var(--accent-color);
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    background: #f8f9fa;
+    border-radius: 0 8px 8px 0;
+    color: var(--secondary-color);
+    font-style: italic;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.article-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tags-container {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid #f0f0f0;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.tag {
+    background: var(--tag-bg);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.tag:hover {
+    background: white;
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+}
+
+/* Базовый стиль для кнопок */
+.button {
+    padding: 12px 24px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Кнопка "Смотреть все блоги" */
+.view-blogs-button {
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+}
+
+.view-blogs-button:hover {
+    background-color: #1976D2;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Кнопка изменения статуса */
+.status-button {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.status-button:hover {
+    background-color: #1976D2;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Кнопка удаления */
+.delete-button {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Выравнивание кнопок в контейнере */
+.article-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+/* Плавающая кнопка */
+.view-blogs {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Убедимся, что кнопка поверх остального контента */
+}
+
+.view-blogs-button {
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+    transition: all 0.3s ease;
+}
+
+.view-blogs-button:hover {
+    background-color: #1976D2;
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.5);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .article-container {
+        padding: 20px;
+    }
+
+    .article-title {
+        font-size: 2rem;
+    }
+
+    .view-blogs {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .view-blogs-button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+}
